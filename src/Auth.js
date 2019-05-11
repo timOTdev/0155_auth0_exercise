@@ -1,5 +1,6 @@
 /* eslint no-restricted-globals: 0 */
 import auth0 from 'auth0-js';
+import jwtDecode from 'jwt-decode';
 
 export default class Auth {
 	constructor() {
@@ -9,7 +10,7 @@ export default class Auth {
 			redirectURI: 'http://localhost:3000/callback',
 			audience: '', // endpoint to get user information
 			responseType: 'token id_token', // desired response (jwt)
-			scope: 'openid'
+			scope: 'openid profile'
 		});
 	}
 
@@ -37,8 +38,23 @@ export default class Auth {
 		});
 	}
 
-	isAuthenticated() {
+	isAuthenticated = () => {
 		let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
 		return new Date().getTime() < expiresAt;
+	};
+
+	getProfile() {
+		if (localStorage.getItem('id_token')) {
+			return jwtDecode(localStorage.getItem('id_token'));
+		} else {
+			return {};
+		}
 	}
+
+	logout = () => {
+		localStorage.removeItem('access_token');
+		localStorage.removeItem('id_token');
+		localStorage.removeItem('expires_at');
+		location.pathname = '/';
+	};
 }

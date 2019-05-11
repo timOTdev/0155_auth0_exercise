@@ -4,7 +4,7 @@ export default class Secret extends Component {
 	render() {
 		return (
 			<div>
-				<p>Secret Page</p>
+				<p>The secret to life is...</p>
 				<a href="/">Go to home</a>
 			</div>
 		);

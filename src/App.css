@@ -2,10 +2,11 @@
 	text-align: center;
 }
 
-.App-logo {
-	animation: App-logo-spin infinite 20s linear;
+.userimage {
 	height: 40vmin;
 	pointer-events: none;
+	margin-top: 2rem;
+	border-radius: 50%;
 }
 
 .App-header {

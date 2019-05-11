@@ -4,8 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Auth from './Auth';
+import logo from './logo.svg';
 
 const auth = new Auth();
+let username = auth.getProfile().given_name || 'User';
+let userimage = auth.getProfile().picture || logo;
 
 let state = {};
 window.setState = changes => {
@@ -15,7 +18,8 @@ window.setState = changes => {
 
 /* eslint no-restricted-globals: 0 */
 let initialState = {
-	name: 'Tim',
+	name: username,
+	userimage: userimage,
 	location: location.pathname.replace(/^\/?|\/$/g, ''),
 	auth
 };

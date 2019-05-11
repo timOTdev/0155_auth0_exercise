@@ -4,7 +4,8 @@ export default class NotFound extends Component {
 	render() {
 		return (
 			<div>
-				<p>Not Found Page</p>
+				<p>You are not authorized.</p>
+				<a href="/">Go to home</a>
 			</div>
 		);
 	}

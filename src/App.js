@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Main from './components/Main';
 import Callback from './components/Callback';
@@ -18,7 +17,7 @@ class App extends Component {
 				break;
 			case 'secret':
 				mainComponent = this.props.auth.isAuthenticated() ? (
-					<Secret />
+					<Secret {...this.props} />
 				) : (
 					<NotFound />
 				);
@@ -30,7 +29,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
+					<img src={this.props.userimage} className="userimage" alt="profile" />
 					<p>Welcome to React, {this.props.name}!</p>
 				</header>
 				{mainComponent}
