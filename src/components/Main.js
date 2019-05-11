@@ -13,12 +13,14 @@ export default class Main extends Component {
 					<a href="/secret">Click here</a>
 				</p>
 
-				<div>
-					<hr />
-					Please login first
-					<hr />
-					<button onClick={this.handleLogin}>Login</button>
-				</div>
+				{!this.props.auth.isAuthenticated() && (
+					<div>
+						<hr />
+						Please login first
+						<hr />
+						<button onClick={this.handleLogin}>Login</button>
+					</div>
+				)}
 			</div>
 		);
 	}

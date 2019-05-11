@@ -5,6 +5,7 @@ export default class Secret extends Component {
 		return (
 			<div>
 				<p>Secret Page</p>
+				<a href="/">Go to home</a>
 			</div>
 		);
 	}
