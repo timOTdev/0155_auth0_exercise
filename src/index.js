@@ -10,8 +10,10 @@ window.setState = changes => {
 	ReactDOM.render(<App {...state} />, document.getElementById('root'));
 };
 
+/* eslint no-restricted-globals: 0 */
 let initialState = {
-	name: 'Tim'
+	name: 'Tim',
+	location: location.pathname.replace(/^\/?|\/$/g, '')
 };
 
 window.setState(initialState);
