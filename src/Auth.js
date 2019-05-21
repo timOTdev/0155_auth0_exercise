@@ -18,7 +18,7 @@ export default class Auth {
 		this.auth0.authorize();
 	};
 
-	handleAuthentication() {
+	handleAuthentication = () => {
 		this.auth0.parseHash((err, authResults) => {
 			if (err) {
 				return console.Error(err);
@@ -36,20 +36,20 @@ export default class Auth {
 			location.hash = ''; // clears out url string;
 			location.pathname = '/secret';
 		});
-	}
+	};
 
 	isAuthenticated = () => {
 		let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
 		return new Date().getTime() < expiresAt;
 	};
 
-	getProfile() {
+	getProfile = () => {
 		if (localStorage.getItem('id_token')) {
 			return jwtDecode(localStorage.getItem('id_token'));
 		} else {
 			return {};
 		}
-	}
+	};
 
 	logout = () => {
 		localStorage.removeItem('access_token');
